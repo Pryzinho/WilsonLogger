@@ -1,0 +1,16 @@
+{
+  "token": "TOKEN DO SEU BOT",
+  "activity": {
+    "presence": "discord-template",
+    "status": "idle"
+  },
+  "data": {
+    "idChannel": [
+      "CANAL QUE O BOT VAI MANDAR MENSAGEM"
+    ],
+    "pathFile": {
+      "logPath": "C:/Users/jheff/OneDrive/Documentos/Klei/DoNotStarveTogether/Bt1/Master/server_chat_log.txt",
+      "gitBash":"C:/Program Files/Git/bin/bash"
+    }
+  }
+}

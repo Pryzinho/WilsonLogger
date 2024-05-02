@@ -1,4 +1,4 @@
-const { Client, Collection, GatewayIntentBits } = require("discord.js");
+const { Client, GatewayIntentBits } = require("discord.js");
 const fs = require("fs");
 const consoled = require("consoled.js");
 
@@ -15,9 +15,6 @@ const client = new Client({
 const { token } = require("./config.json");
 client.login(token)
     .catch(err => consoled.bright.red(`Verifique se o TOKEN e INTENTS estão corretas.\n ${err}`) && process.exit(1))
-
-client.slashes = new Collection()
-client.aliases = new Collection();
 
 const eventFiles = fs.readdirSync("./events/").filter(file => file.endsWith(".js"))
 eventFiles.forEach(event => {

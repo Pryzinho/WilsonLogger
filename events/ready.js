@@ -1,7 +1,7 @@
 const consoled = require("consoled.js")
 const { ActivityType } = require("discord.js")
 const { activity } = require("../config.json")
-const sendFn = require('../modules/sendFn');
+const bridge = require('../api/GameBridge');
 
 module.exports = {
   config: {
@@ -10,7 +10,7 @@ module.exports = {
   },
   execute: async (client) => {
     let { getChannelHooks } = require('../index');
-    var config = sendFn.getConfig();
+    var config = bridge.getConfig();
     var idChannels = config.data.idChannel
     consoled.cyan(`${client.user.username} está ativo em ${client.guilds.cache.size} servidor com o ping ${client.ws.ping + "ms"}!`)
     client.user.setStatus(activity.status)
@@ -36,7 +36,7 @@ module.exports = {
 
     try {
       if (getChannelHooks().length !== 0) {
-        sendFn.SendChatToDiscord(getChannelHooks());
+        bridge.SendChatToDiscord(getChannelHooks());
       }
     } catch (error) {
       console.log(error)

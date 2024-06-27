@@ -1,7 +1,7 @@
 **Instalação de Dependências**
 1. Instale o [Node.js](https://nodejs.org)
-2. Tenha certeza que o [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) está intalado junto com o Node.js
-3. Dentro da pasta do Bot usando um terminal(Pode ser o cmd.exe do Windows ou então o terminal interno do Visual Studio Code) instale as dependencias:
+2. Tenha certeza que o [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) está intalado junto com o [Node.js](https://nodejs.org).
+3. Dentro da pasta do Bot(pasta principal do projeto onde está localizado o ``index.js``) usando um terminal(Pode ser o cmd.exe do Windows ou então o terminal interno do Visual Studio Code) instale as dependências:
 4. npm i discord.js
 5. npm i fs
 6. npm i consoled.js

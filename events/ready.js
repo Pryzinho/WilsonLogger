@@ -8,8 +8,8 @@ module.exports = {
   },
   execute: async (client) => {
     var config = bridge.getConfig();
-    consoled.cyan(`${client.user.username} está ativo em ${client.guilds.cache.size} servidor com o ping ${client.ws.ping + "ms"}!`)
-    client.user.setStatus('online')
+    consoled.cyan(`${client.user.username} está ativo em ${client.guilds.cache.size} servidor com o ping ${client.ws.ping + "ms"}!`);
+    client.user.setStatus('online');
 
     config.data.servers.forEach(server => {
       let channelsHook = [];
@@ -30,11 +30,11 @@ module.exports = {
         bridge.SendChatToDiscord(server, channelsHook);
         return;
       }
-      consoled.red(`O servidor ${server.name} não tem nenhum Canal válido.`)
+      consoled.red(`O servidor ${server.name} não tem nenhum Canal válido.`);
     });
   }
 }
 function isNumeric(str) {
-  if (typeof str != "string") return false
-  return !isNaN(str) && !isNaN(parseFloat(str))
+  if (typeof str != "string") return false;
+  return !isNaN(str) && !isNaN(parseFloat(str));
 }

@@ -4,11 +4,14 @@
 3. Dentro da pasta do Bot(pasta principal do projeto onde está localizado o ``index.js``) usando um terminal(Pode ser o cmd.exe do Windows ou então o terminal interno do Visual Studio Code) instale as dependências:
 4. npm i discord.js
 5. npm i fs
-6. npm i consoled.js (Você pode trocar o consoled.js pelo ``console.log()`` padrão, desde que altere o código onde ele está inserido, a mudança será somente estetica no console do host).
+6. npm i dotenv
+7. npm i consoled.js (Você pode trocar o consoled.js pelo ``console.log()`` padrão, desde que altere o código onde ele está inserido, a mudança será somente estetica no console do host).
 
 **Configuração do Bot**
-1. Abra o arquivo ``config.json``
-2. Edite ``token`` para o token do seu bot gerado pela [Discord Developers](https://discord.com/developers/applications)
+1. Altere o nome do arquivo ``.env.example`` para ``.env``.
+2. Abra o arquivo ``.env``.
+3. Edite o valor ``TOKEN`` para o token do seu bot gerado pela [Discord Developers](https://discord.com/developers/applications)
+4. Abra o arquivo ``config.json``
 <br>
 **Se você não tem interesse em usar o Multi-Shard, deixe apenas o servidor "1".**
 <br>

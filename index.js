@@ -10,8 +10,7 @@ const client = new Client({
         GatewayIntentBits.MessageContent,
     ],
 });
-const { token } = require("./config.json");
-client.login(token)
+client.login(process.env.TOKEN)
     .catch(err => consoled.bright.red(`Verifique se o TOKEN e INTENTS estão corretas.\n ${err}`) && process.exit(1))
 
 const eventFiles = fs.readdirSync("./events/").filter(file => file.endsWith(".js"))

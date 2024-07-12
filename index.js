@@ -2,9 +2,7 @@ const { Client, GatewayIntentBits } = require("discord.js");
 const fs = require("fs");
 const consoled = require("consoled.js");
 
-// DST Area
-let channelHooks = [];
-
+// Essas intents provavelmente nem vão ser usada, altere como preferir.
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
@@ -12,8 +10,7 @@ const client = new Client({
         GatewayIntentBits.MessageContent,
     ],
 });
-const { token } = require("./config.json");
-client.login(token)
+client.login(process.env.TOKEN)
     .catch(err => consoled.bright.red(`Verifique se o TOKEN e INTENTS estão corretas.\n ${err}`) && process.exit(1))
 
 const eventFiles = fs.readdirSync("./events/").filter(file => file.endsWith(".js"))
@@ -26,13 +23,6 @@ eventFiles.forEach(event => {
         client.on(ev.config.name, (...args) => ev.execute(...args, client))
     }
 });
+
 consoled.green(`${eventFiles.length} ${eventFiles.length > 1 ? "eventos" : "evento"} encontrados.`);
 consoled.bright.cyan("Serviço inicializado com sucesso.");
-
-function getChannelHk() {
-    return channelHooks;
-}
-
-module.exports = {
-    getChannelHooks: getChannelHk
-};

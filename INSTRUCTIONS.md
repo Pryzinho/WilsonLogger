@@ -4,7 +4,7 @@
 3. Dentro da pasta do Bot(pasta principal do projeto onde está localizado o ``index.js``) usando um terminal(Pode ser o cmd.exe do Windows ou então o terminal interno do Visual Studio Code) instale as dependências:
 4. npm i discord.js
 5. npm i fs
-6. npm i consoled.js
+6. npm i consoled.js (Você pode trocar o consoled.js pelo ``console.log()`` padrão, desde que altere o código onde ele está inserido).
 
 **Configuração do Bot**
 1. Abra a config.json

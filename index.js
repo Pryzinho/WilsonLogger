@@ -2,7 +2,7 @@ const { Client, GatewayIntentBits } = require("discord.js");
 const fs = require("fs");
 const consoled = require("consoled.js");
 
-// DST Area
+// DiscordChannel em que o bot deve mandar mensagem.
 let channelHooks = [];
 
 const client = new Client({
@@ -29,10 +29,8 @@ eventFiles.forEach(event => {
 consoled.green(`${eventFiles.length} ${eventFiles.length > 1 ? "eventos" : "evento"} encontrados.`);
 consoled.bright.cyan("Serviço inicializado com sucesso.");
 
-function getChannelHk() {
+
+// tenho que testar antes de dar commit e push.
+export function getChannelHooks() {
     return channelHooks;
 }
-
-module.exports = {
-    getChannelHooks: getChannelHk
-};

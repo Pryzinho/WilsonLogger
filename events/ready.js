@@ -18,19 +18,20 @@ module.exports = {
 
     consoled.gray("===== Canal(is) vinculado(s) ====");
     for (const idChannel of idChannels) {
-      if (isNumeric(idChannel)) {
+      if (!isNumeric(idChannel))return;
         if (client.channels.cache.get(idChannel)) {
-          let channel = client.channels.cache.get(idChannel)
+          consoled.red(`O canal ${idChannel}] é inválido.`);
+          return;
+        }
+          let channel = client.channels.cache.get(idChannel);
+          // Verifica se o canal já está na array.
           if (getChannelHooks().indexOf(channel) > -1) {
-            consoled.green(`Canal vinculado [${channel.guild.name}][${channel.name}][${idChannel}] reconhecido`)
+            consoled.green(`Canal vinculado [${channel.guild.name}][${channel.name}][${idChannel}] reconhecido`);
           } else {
             getChannelHooks().push(channel);
-            consoled.cyan(`Adicionando canal [${channel.guild.name}][${channel.name}][${idChannel}] para lista de canais vinculados`)
+            consoled.cyan(`Adicionando canal [${channel.guild.name}][${channel.name}][${idChannel}] para lista de canais vinculados`);
           }
-        } else {
-          consoled.red(`Canal Vinculado: [${idChannel}] invalido.`)
-        }
-      }
+      
     }
     consoled.gray("=================================");
 

@@ -2,7 +2,7 @@
   "data": {
     "servers": {
       "1": {
-        "name": "Only used for debug reasons",
+        "name": "Only seen at the console",
         "channelsId": [
           "Id do canal do Discord em que o bot vai mandar a mensagem",
           "Pode ser mais de um canal"

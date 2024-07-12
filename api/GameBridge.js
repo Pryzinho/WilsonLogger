@@ -7,21 +7,27 @@ module.exports = {
         return require("../config.json");
     },
     /*
-    Local em que o arquivo de log do servidor está localizado.
-    */
-    getLogPath: function () {
-        return this.getConfig().data.pathFile.logPath;
-    },
-    /*
      Em um sistema Windows, eu só consegui pensar em utilizar um tail interno do GitBash.
      Por favor leia mais sobre ChildProcess pra entender o motivo de utilização do tail e gitbash.
     */
-    getGitBashPath: function(){
-        return this.getConfig().data.pathFile.gitBash;
+    getGitBashPath: function () {
+        return this.getConfig().data.gitBash;
     },
-    // Só deve ser chamado uma única vez.
-    SendChatToDiscord: function (channelHooks) {
-        let ls = spawn('tail', [`-f "${this.getLogPath()}"`], {shell: this.getGitBashPath() });
+    // Só deve ser chamado uma única vez por servidor.
+    /**
+     * 
+     * @param server JSON contendo o servidor atual, propiedades: {name, logPath, channelsId }
+     * @param channelHooks Lista de DiscordChannel.
+     */
+    SendChatToDiscord: function (server, channelHooks) {
+        let logPath = String(server.logPath);
+        if (!logPath || logPath.trim() == '' || logPath.trim() == ' ') {
+            console.error(`Server ${server.name}: logPath está vazio ou não existe.`);
+            return;
+        }
+        // Comando "tail" originalmente do Linux, nesse caso é um usado uma shell customizada que possui o tail (GitBash)
+        // É provavel que tenha uma opção melhor de shell ou comando.
+        let ls = spawn('tail', [`-f "${server.logPath}"`], { shell: this.getGitBashPath() });
         ls.on('error', (err) => {
             console.error('Erro ao criar o processo: ', err);
         });
@@ -30,14 +36,15 @@ module.exports = {
             rows.forEach(row => {
                 // Verifica se é uma linha de fato válida e com conteúdo.
                 if (row.trim() !== '' && row.trim() !== ' ') {
-                    // Itera com todos os canais do discord vincuados e manda a linha da log pro estudo.
+                    // Itera com todos os canais do discord vinculados ao servidor e manda a linha da log pro canal.
                     // channelHook é um DiscordChannel.
                     channelHooks.forEach(channelHook => {
                         /* 
-                        Manda a mensagem entre `` impedindo o Discord de formatar os KUID
-                        para itálico. (Exemplo: KU_ABC123_)
+                        Manda a mensagem entre `` impedindo o Discord de formatar os KUID que terminam com _ para itálico
+                        (Exemplo: KU_ABC123_).
                         */
-                        channelHook.send("``" + row + "``");
+                        channelHook.send(`\`${row}\``);
+                        // Outra alternativa: channelHook.send("``" + row + "``");
                     });
                 }
             });

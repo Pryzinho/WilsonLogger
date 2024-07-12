@@ -2,9 +2,7 @@ const { Client, GatewayIntentBits } = require("discord.js");
 const fs = require("fs");
 const consoled = require("consoled.js");
 
-// DiscordChannel em que o bot deve mandar mensagem.
-let channelHooks = [];
-
+// Essas intents provavelmente nem vão ser usada, altere como preferir.
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
@@ -26,11 +24,6 @@ eventFiles.forEach(event => {
         client.on(ev.config.name, (...args) => ev.execute(...args, client))
     }
 });
+
 consoled.green(`${eventFiles.length} ${eventFiles.length > 1 ? "eventos" : "evento"} encontrados.`);
 consoled.bright.cyan("Serviço inicializado com sucesso.");
-
-
-// tenho que testar antes de dar commit e push.
-export function getChannelHooks() {
-    return channelHooks;
-}

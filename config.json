@@ -1,16 +1,33 @@
 {
   "token": "TOKEN DO SEU BOT",
-  "activity": {
-    "presence": "discord-template",
-    "status": "idle"
-  },
   "data": {
-    "idChannel": [
-      "CANAL QUE O BOT VAI MANDAR MENSAGEM"
-    ],
-    "pathFile": {
-      "logPath": "C:/Users/jheff/OneDrive/Documentos/Klei/DoNotStarveTogether/Bt1/Master/server_chat_log.txt",
-      "gitBash":"C:/Program Files/Git/bin/bash"
-    }
+    "servers": {
+      "1": {
+        "name": "Only used for debug reasons",
+        "channelsId": [
+          "Id do canal do Discord em que o bot vai mandar a mensagem",
+          "Pode ser mais de um canal"
+        ],
+        "logPath": "./Klei/DoNotStarveTogether/Shard1/Master/server_chat_log.txt"
+      },
+      "2": {
+        "name": "My Endless Server",
+        "channelsId": [
+          "Channel1",
+          "Channel2",
+          "Channel3",
+          "..."
+        ],
+        "logPath": "./Klei/DoNotStarveTogether/EndlessShard/Master/server_chat_log.txt"
+      },
+      "3": {
+        "name": "Third server in a row",
+        "channelsId": [
+          "Just one for this"
+        ],
+        "logPath": "C:/your/path/here/cluster_name_here/log_is_prob_in_master_folder/your_log.txt"
+      }
+    },
+    "gitBash": "C:/Program Files/Git/bin/bash"
   }
 }

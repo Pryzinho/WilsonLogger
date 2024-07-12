@@ -1,6 +1,13 @@
 **Feel free to translate, collaborate, or fork the code as long as you adhere to the current license.
 The project is maintained in Portuguese for ease of use, but English support can be provided if there is interest from someone for the service**
 
+**Ultima versão testada:**
+<br>
+``"consoled.js": "^1.0.4"``<br>
+``"discord.js": "^14.14.1"``<br>
+``"fs": "^0.0.1-security"``<br>
+Caso não consiga em uma versão mais atualizada, tente usar essas versões no ``package.json``
+
 Algumas práticas e estruturamento de código vão mudar conforme o aprimoramento do serviço, sugiro verificar commits antigos para entender o processo de criação do serviço.
 
 Um Bot para o discord feito em Node.js, com a função de ler **logs** de um servidor de Don't Starve Together e posta em um ou mais canal do Discord para ter registros do que os jogadores fazem, dizem, entre outras coisas relacionadas e não relacionadas aos jogadores.

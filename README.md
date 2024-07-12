@@ -3,7 +3,7 @@ The project is maintained in Portuguese for ease of use, but English support can
 <br>
  Make sure to take a look at [TO-DO List](TO-DO.md).**
 
-**Ultima versão testada:**
+**Ultima versão testada e funcionando:**
 <br>
 ``"consoled.js": "^1.0.4"``<br>
 ``"discord.js": "^14.14.1"``<br>

@@ -11,12 +11,12 @@ module.exports = {
     consoled.cyan(`${client.user.username} está ativo em ${client.guilds.cache.size} servidor com o ping ${client.ws.ping + "ms"}!`);
     client.user.setStatus('online');
 
-    config.data.servers.forEach(server => {
+    Object.values(config.data.servers).forEach(server => {
       let channelsHook = [];
       server.channelsId.forEach(channelId => {
         if (isNumeric(channelId)) {
           if (client.channels.cache.get(channelId)) {
-            let discordChannel = client.channels.cache.get(idChannel);
+            let discordChannel = client.channels.cache.get(channelId);
             if (!(channelsHook.indexOf(discordChannel) > -1)) {
               channelsHook.push(discordChannel);
             }
@@ -30,7 +30,7 @@ module.exports = {
         bridge.SendChatToDiscord(server, channelsHook);
         return;
       }
-      consoled.red(`O servidor ${server.name} não tem nenhum Canal válido.`);
+      consoled.red(`O servidor "${server.name}" não tem nenhum Canal válido.`);
     });
   }
 }

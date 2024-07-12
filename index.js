@@ -1,6 +1,7 @@
 const { Client, GatewayIntentBits } = require("discord.js");
 const fs = require("fs");
 const consoled = require("consoled.js");
+require("dotenv").config();
 
 // Essas intents provavelmente nem vão ser usada, altere como preferir.
 const client = new Client({

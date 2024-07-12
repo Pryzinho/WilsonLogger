@@ -1,4 +1,5 @@
 const { spawn } = require('node:child_process');
+const consoled = require("consoled.js");
 module.exports = {
     /*
     JSON com as configurações do serviço.
@@ -27,7 +28,9 @@ module.exports = {
         }
         // Comando "tail" originalmente do Linux, nesse caso é um usado uma shell customizada que possui o tail (GitBash)
         // É provavel que tenha uma opção melhor de shell ou comando.
+
         let ls = spawn('tail', [`-f "${server.logPath}"`], { shell: this.getGitBashPath() });
+        consoled.cyan(`${server.name}: Escutando todas as mensagens...`);
         ls.on('error', (err) => {
             console.error('Erro ao criar o processo: ', err);
         });

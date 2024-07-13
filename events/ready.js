@@ -8,7 +8,6 @@ module.exports = {
   },
   execute: async (client) => {
     var config = bridge.getConfig();
-    consoled.cyan(`${client.user.username} está ativo em ${client.guilds.cache.size} servidor com o ping ${client.ws.ping + "ms"}!`);
     client.user.setStatus('online');
 
     Object.values(config.data.servers).forEach(server => {
@@ -20,7 +19,7 @@ module.exports = {
             if (!(channelsHook.indexOf(discordChannel) > -1)) {
               channelsHook.push(discordChannel);
             }
-            consoled.white(`Server ${server.name}: Canal vinculado - ${discordChannel.name}(${discordChannel.guild.name}).`);
+            consoled.green(`Server ${server.name}: Canal vinculado - ${discordChannel.name}(${discordChannel.guild.name}).`);
           } else {
             consoled.red(`Server ${server.name}: O canal vinculado "${channelId}" não existe.`);
           }
@@ -32,6 +31,7 @@ module.exports = {
       }
       consoled.red(`O servidor "${server.name}" não tem nenhum Canal válido.`);
     });
+    consoled.green(`${client.user.username} está ativo em ${client.guilds.cache.size} servidor com a latência ${client.ws.ping <= 0 ? "local" : `de ${client.ws.ping} + ms`}!`);
   }
 }
 function isNumeric(str) {

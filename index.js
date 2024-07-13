@@ -24,6 +24,4 @@ eventFiles.forEach(event => {
         client.on(ev.config.name, (...args) => ev.execute(...args, client))
     }
 });
-
-consoled.green(`${eventFiles.length} ${eventFiles.length > 1 ? "eventos" : "evento"} encontrados.`);
-consoled.bright.cyan("Serviço inicializado com sucesso.");
+consoled.bright.cyan("Inicializando serviços...");

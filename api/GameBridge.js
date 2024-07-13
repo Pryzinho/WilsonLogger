@@ -1,8 +1,9 @@
 const { spawn } = require('node:child_process');
 const consoled = require("consoled.js");
 module.exports = {
-    /*
-    JSON com as configurações do serviço.
+    /**
+    * JSON com as configurações do serviço.
+    * @returns {JSON}
     */
     getConfig: function () {
         return require("../config.json");
@@ -17,8 +18,8 @@ module.exports = {
     // Só deve ser chamado uma única vez por servidor.
     /**
      * 
-     * @param server JSON contendo o servidor atual, propiedades: {name, logPath, channelsId }
-     * @param channelHooks Lista de DiscordChannel.
+     * @param {JSON} server JSON contendo o servidor atual, propiedades: {name, logPath, channelsId }
+     * @param {TextChannel[]} channelHooks Lista de DiscordChannel.
      */
     SendChatToDiscord: function (server, channelHooks) {
         let logPath = String(server.logPath);
@@ -28,13 +29,12 @@ module.exports = {
         }
         // Comando "tail" originalmente do Linux, nesse caso é um usado uma shell customizada que possui o tail (GitBash)
         // É provavel que tenha uma opção melhor de shell ou comando.
-
-        let ls = spawn('tail', [`-f "${server.logPath}"`], { shell: this.getGitBashPath() });
+        let readerProcess = spawn('tail', [`-f "${server.logPath}"`], { shell: this.getGitBashPath() });
         consoled.cyan(`${server.name}: Escutando todas as mensagens...`);
-        ls.on('error', (err) => {
+        readerProcess.on('error', (err) => {
             console.error('Erro ao criar o processo: ', err);
         });
-        ls.stdout.on('data', (data) => {
+        readerProcess.stdout.on('data', (data) => {
             let rows = data.toString().split('\n');
             rows.forEach(row => {
                 // Verifica se é uma linha de fato válida e com conteúdo.

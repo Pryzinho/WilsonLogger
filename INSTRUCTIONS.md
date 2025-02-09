@@ -5,7 +5,7 @@
 4. npm i discord.js
 5. npm i fs
 6. npm i dotenv
-7. npm i consoled.js (Você pode trocar o consoled.js pelo ``console.log()`` padrão, desde que altere o código onde ele está inserido, a mudança será somente estetica no console do host).
+7. npm i consoled.js (Você pode trocar o consoled.js pelo ``console.log()`` padrão, desde que altere o código onde ele está inserido, a mudança será somente estetica no console do host). **Essa dependência é puramente estetica para o terminal e vai ser removida em breve**
 
 **Configuração do Bot**
 1. Altere o nome do arquivo ``.env.example`` para ``.env``.

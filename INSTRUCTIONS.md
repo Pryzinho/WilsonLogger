@@ -25,5 +25,5 @@ Opcionalmente você pode baixar outro shell que tenha o comando "tail" e colocar
 7. Troque na config.json o valor de ``gitBash`` pelo caminho em que a bin do bash está instalado, normalmente o que está la já funciona.
 <br>
 **Se o servidor estive sendo hospedado em Linux:**
-5. Troque a opção ``shell`` do ChildProcces para um shell padrão do Linux no arquivo ``sendFn.js``, veja a [Documentação](https://nodejs.org/api/child_process.html#child_processspawncommand-args-options).
+5. Troque a opção ``shell`` do ChildProcces para um shell padrão do Linux no arquivo ``api/GameBridge.js``, veja a [Documentação](https://nodejs.org/api/child_process.html#child_processspawncommand-args-options).
    
